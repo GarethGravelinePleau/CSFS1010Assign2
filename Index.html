@@ -189,7 +189,7 @@ function submit(e){
 function newItem(task){
   let ul = document.querySelector('ul');
   let li = document.createElement('li');
-  li.innerHTML = `<div class="listWork"><span class="checkbox"><input type="checkbox"></span><label>${task}</label></div>`;
+  li.innerHTML = `<div class="listWork"><span class = "removalIcon">X</span><span class="checkbox"><input type="checkbox"></span><label>${task}</label></div>`;
   ul.appendChild(li);
   document.querySelector('.taskManager').style.display = 'block';
 }
@@ -220,13 +220,9 @@ $('form').keyup(function(a){
     }
 })
 
-$(document).on('dblclick', 'label', function(b){
+$(document).on('click', '.removalIcon', function(b){
     $(this).closest('li').remove();
 });
-
-
-
-
 
     
 })

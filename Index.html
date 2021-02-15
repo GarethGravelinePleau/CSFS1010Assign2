@@ -92,7 +92,7 @@
         padding-left: 0;
         border-style: solid;
         border-color: red;
-        border-width: 1px
+        border-width: 2px
         
 
     }
@@ -162,8 +162,7 @@
     </div>
 
     <form>
-      <input class="form-control" type="text" placeholder="Add an item..." name="task">
-      
+      <input class="form-control" type="text" placeholder="Add an item..." name="taskForm">
     </form>
     <div class= "taskManager, noselect">
     <ul>
@@ -208,6 +207,25 @@ $(document).on('click','label', function(){
 $(document).on('click','label',function(){
     $(this).toggleClass('text-muted'); 
 })
+
+$(document).on('click','li',function(){
+
+    $(this).parent().append($(this));
+})
+
+$('form').keyup(function(a){
+    if(a.keyCode == 13)
+    {
+    $('form')[0].reset();
+    }
+})
+
+$(document).on('dblclick', 'label', function(b){
+    $(this).closest('li').remove();
+});
+
+
+
 
 
     

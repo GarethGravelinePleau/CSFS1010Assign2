@@ -198,7 +198,7 @@
 
 $(document).ready(function($){{
     document.querySelector('form').addEventListener('submit',submit);
-}
+};
 
 function submit(e){
     e.preventDefault();
@@ -206,7 +206,7 @@ function submit(e){
     if(input.value !='')
     newItem(input.value);
     input.value ='';
-}
+};
 
 function newItem(task){
     let ul = document.querySelector('ul');
@@ -214,7 +214,7 @@ function newItem(task){
     li.innerHTML = `<div class="listWork"><i class="fas fa-trash-alt"></i><span class="checkbox"><input type="checkbox"></span><label>${task}</label><span class="datepicker">Date: <input type="date" id="datepicker"></span></div>`;
     ul.appendChild(li);
     document.querySelector('.taskManager').style.display = 'block';  // creates list object in ul along with checkbox, garbage can, label and HTML calendar 
-}
+};
 
 $(document).on('click','label', function(){
     const checkBoxSwitch = $(this).closest('div').find('input[type="checkbox"]');
@@ -225,7 +225,7 @@ $(document).on('click','label', function(){
     {
     checkBoxSwitch.prop('checked', false);
     }
-      }); //checks off checkbox when label clicked
+}); //checks off checkbox when label clicked
       
 $(document).on('click', '.checkbox', function(){
     $(this).siblings('label').toggleClass('text-muted');

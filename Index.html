@@ -196,25 +196,19 @@
 
 <script>
 
-$(document).ready(function($){{
-    document.querySelector('form').addEventListener('submit',submit);
-};
+$(document).ready(function($){
 
-function submit(e){
-    e.preventDefault();
-    let input = document.querySelector('input');
-    if(input.value !='')
-    newItem(input.value);
-    input.value ='';
-};
-
-function newItem(task){
-    let ul = document.querySelector('ul');
-    let li = document.createElement('li');
-    li.innerHTML = `<div class="listWork"><i class="fas fa-trash-alt"></i><span class="checkbox"><input type="checkbox"></span><label>${task}</label><span class="datepicker">Date: <input type="date" id="datepicker"></span></div>`;
-    ul.appendChild(li);
-    document.querySelector('.taskManager').style.display = 'block';  // creates list object in ul along with checkbox, garbage can, label and HTML calendar 
-};
+$('form').submit(function(event) {
+    let task = $('input').val();
+    if(task){
+     $(`<li><div class="listWork"><i class="fas fa-trash-alt"></i><span class="checkbox"><input type="checkbox"></span><label>${task}</label><span class="datepicker">Date: <input type="date" id="datepicker"></span></div></li>`).prependTo('ul');
+     event.preventDefault();
+     $('input').val('');
+     } else {
+     alert('Remember to add a list item!') // sends alert when input is left empty
+     event.preventDefault();
+     }   
+});
 
 $(document).on('click','label', function(){
     const checkBoxSwitch = $(this).closest('div').find('input[type="checkbox"]');
@@ -252,12 +246,6 @@ $(document).on('click', 'div i', function(){
     })
 }); // deletes associated list item when garbage font awesome icon is clicked
 
-$(document).on('submit', 'form', function(b) {
-    if ($('#thisForm').val().trim() == '') {
-    b.preventDefault();
-    alert('Remember To Add A List Item');
-  }
-}); // sends alert when input is left empty
 
 $("input:text:visible:first").focus();
 }); // insures focus goes to form input immediately when page is loaded
@@ -266,8 +254,6 @@ $(function() {
     $( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
 }); // allows list items to be sorted by dragging within ul parent
-
-
 
 
 </script>
